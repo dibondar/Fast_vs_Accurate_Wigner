@@ -1,0 +1,6 @@
+[submodule "AccurateWigner"]
+	path = AccurateWigner
+	url = https://github.com/dibondar/AccurateWigner
+[submodule "FastWigner"]
+	path = FastWigner
+	url = https://github.com/dibondar/FastWigner
