@@ -39,7 +39,7 @@ sys_params = dict(
 ##########################################################################################
 
 import numpy as np
-acc_prop = AccurateWignerPropagator(X_amplitude=30., P_amplitude=50., **sys_params)
+acc_prop = AccurateWignerPropagator(X_amplitude=30.,  P_amplitude=60., **sys_params)
 acc_ground_state = acc_prop.get_ground_state(abs_tol_purity=1e-10).get().real
 acc_propagated_state = acc_prop.propagate(10000).get().real
 
@@ -59,25 +59,25 @@ img_params = dict(
     origin='lower',
     aspect=1,
     cmap='bwr',
-    norm=WignerNormalize(vmin=-5e-9, vmax=5e-9),
+    norm=WignerNormalize(vmin=-1e-7, vmax=1e-7),
 )
 
 plt.subplot(221)
 #plt.title("Ground state Wigner function obtained via Fast Wigner propagator")
-plt.text(-18, -8, '(a)', color='k', fontsize=15)
+plt.text(-28, -8, '(a)', color='k', fontsize=15)
 plt.imshow(fast_ground_state, **img_params)
-plt.xlim([-20., 20])
+#plt.xlim([-20., 20])
 plt.ylim([-10., 10])
-#plt.xlabel('$x$ (a.u.)')
+plt.xlabel('$x$ (a.u.)')
 plt.ylabel('$p$ (a.u.)')
 
 plt.subplot(222)
 #plt.title("Propagated state via Fast Wigner propagator")
-plt.text(-18, -8, '(b)', color='k', fontsize=15)
+plt.text(-28, -8, '(b)', color='k', fontsize=15)
 plt.imshow(fast_propagated_state, **img_params)
-plt.xlim([-20., 20])
+#plt.xlim([-20., 20])
 plt.ylim([-10., 10])
-#plt.xlabel('$x$ (a.u.)')
+plt.xlabel('$x$ (a.u.)')
 #plt.ylabel('$p$ (a.u.)')
 
 ##########################################################################################
@@ -91,18 +91,18 @@ img_params["extent"]=[acc_prop.X.min(), acc_prop.X.max(), acc_prop.P.min(), acc_
 
 plt.subplot(223)
 #plt.title("Ground state Wigner function obtained via Accurate Wigner propagator")
-plt.text(-18, -8, '(c)', color='k', fontsize=15)
+plt.text(-28, -8, '(c)', color='k', fontsize=15)
 plt.imshow(acc_ground_state, **img_params)
-plt.xlim([-20., 20])
+#plt.xlim([-20., 20])
 plt.ylim([-10., 10])
 plt.xlabel('$x$ (a.u.)')
 plt.ylabel('$p$ (a.u.)')
 
 plt.subplot(224)
 #plt.title("Propagated state via Accurate Wigner propagator")
-plt.text(-18, -8, '(d)', color='k', fontsize=15)
+plt.text(-28, -8, '(d)', color='k', fontsize=15)
 plt.imshow(acc_propagated_state, **img_params)
-plt.xlim([-20., 20])
+#plt.xlim([-40., 40])
 plt.ylim([-10., 10])
 plt.xlabel('$x$ (a.u.)')
 #plt.ylabel('$p$ (a.u.)')
